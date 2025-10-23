@@ -72,7 +72,6 @@ end)
 RegisterCommand('vex_givemoney', function(source, args)
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    -- Check player and permissions
     if not xPlayer then
         TriggerClientEvent('chat:addMessage', source, {
             args = { 'VexLib', '[error]: Cannot find player with this source.' }
@@ -88,7 +87,6 @@ RegisterCommand('vex_givemoney', function(source, args)
         return
     end
 
-    -- Parse args
     local targetId = tonumber(args[1])
     local amount = tonumber(args[2])
 
@@ -116,4 +114,5 @@ RegisterCommand('vex_givemoney', function(source, args)
     TriggerClientEvent('chat:addMessage', source, {
         args = { 'VexLib', ('You gave $%s to player %s.'):format(amount, targetId) }
     })
+
 end)
