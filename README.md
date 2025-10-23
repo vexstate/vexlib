@@ -28,7 +28,7 @@ Built with **professional structure** and **ESX compatibility**, VexLib helps yo
 
 1. **Download or clone** this repository into your `resources/` folder:
    ```bash
-   git clone https://github.com/Vexstate/vexlib.git
+   git clone https://github.com/vexstate/vexlib.git
     ```
 
 2. Add it to your **_server.cfg_**:
@@ -38,6 +38,7 @@ Built with **professional structure** and **ESX compatibility**, VexLib helps yo
 
 3. Make sure **_ESX_** is started before **VexLib** if you want ESX integration:
     ```bash
+    ensure core
     ensure es_extended
     ensure vexlib
     # ensure my_little_script
