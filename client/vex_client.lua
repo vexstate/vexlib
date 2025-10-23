@@ -1,4 +1,3 @@
-
 function notify(text)
     SetNotificationTextEntry('STRING')
     AddTextComponentString(text)
@@ -12,3 +11,4 @@ Citizen.CreateThread(function()
     local welcome = Vex.Locale.get('welcome') or 'Welcome'
     notify(welcome)
 end)
+
