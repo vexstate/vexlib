@@ -2,7 +2,7 @@ function Vex.safeCall(fn, ...)
     local ok, res = pcall(fn, ...)
 
     if not ok then
-        print(('VexLib - safeCall error: %s'):format(tostring(res)))
+        print(('vexlib - safeCall error: %s'):format(tostring(res)))
         return false, res
     end
 
@@ -15,7 +15,7 @@ function Vex.registerCommand(name, cb, adminOnly)
 
         if adminOnly then
             if not xPlayer then
-                print(('^1[VexLib]^0: Player not found for command "%s"'):format(name))
+                print(('^1[vexlib]^0: Player not found for command "%s"'):format(name))
                 return
             end
 
@@ -71,7 +71,7 @@ function Vex.GatherPlayerIdentifier()
     local identifier = GetPlayerIdentifiers(src)
 
     if not identifier then
-        return Exceptions.InvalidValueError.Locale
+        return Exceptions.InvalidValue.Locale
     end
 
     return tostring(identifier)
@@ -79,7 +79,7 @@ end
 
 function Vex.loadPlayer(identifier)
     if type(identifier) ~= 'string' then
-        Vex.Throw(Exceptions.InvalidTypeException, 'identifier must be a string')
+        Vex.Throw(Vex.Exceptions.InvalidType, 'identifier must be a string')
     end
 
     return { id = identifier }
@@ -87,7 +87,7 @@ end
 
 function Vex.ChatNotify(source, msg)
     TriggerClientEvent('chat:addMessage', source, {
-        args = { 'VexLib', msg }
+        args = { '[vexlib]', msg }
     })
 end
 
