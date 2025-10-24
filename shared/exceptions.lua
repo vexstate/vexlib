@@ -1,6 +1,3 @@
-
-Exceptions = {}
-
 local base = {
     __index = function(t,k) return rawget(t,k) end
 }
@@ -12,6 +9,12 @@ function Exceptions.new(typeName, localeKey, details)
     obj.Details = details
     return obj
 end
+
+Exceptions.OK = {
+    Type = 'Exceptions_OK',
+    Locale = 'OK',
+    Humane = 'If everything is right, return right'
+}
 
 Exceptions.Exception = {
     Type = 'Exceptions_Exception',
@@ -30,7 +33,12 @@ Exceptions.InvalidValueError = {
 
 Exceptions.InvalidArgumentError = {
     Type = 'Exceptions_InvalidArgumentError',
-    Locale = 'InvalidArgumentError'
+    Locale = 'InvalidArgumentError',
+    Humane = 'Got an invalid position argument'
+}
+
+Exceptions.TargetNotFoundError = {
+
 }
 
 function Vex.Throw(exceptionDef, details)
@@ -38,19 +46,18 @@ function Vex.Throw(exceptionDef, details)
     exceptionDef.Type or 'Exceptions_Exception',
     exceptionDef.Locale or 'Exception', details)
 
+    local dt = details or ex.Humane
+
     local msg
     if Vex.Locale and Vex.Locale.get then
-        msg = Vex.Locale.get(ex.Locale) or 
-        ('['..ex.Type..'] ' .. tostring(details or ''))
+        msg = Vex.Locale.get(ex.Locale) or
+        ('['..ex.Type..'] ' .. tostring(dt))
     else
-        msg = '['..ex.Type..'] ' .. tostring(details or '')
+        msg = '['..ex.Type..'] ' .. tostring(dt)
     end
 
     error(msg, 2)
 end
 
-function getExceptionDefinitions()
-    return Exceptions
-end
-
-Vex.registerExport('getExceptionDefinitions', getExceptionDefinitions)
+Vex.registerExport('Throw', Vex.Throw)
+Vex.registerExport('Exceptions', Exceptions)
