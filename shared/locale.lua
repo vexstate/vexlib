@@ -1,4 +1,3 @@
-
 Locales = Locales or {}
 
 Vex.Locale = Vex.Locale or {}
@@ -24,7 +23,5 @@ function Vex.Locale.get(key, lang)
 
     return nil
 end
-
-
 
 Vex.registerExport('locale_get', function(k, l) return Vex.Locale.get(k, l)end)
