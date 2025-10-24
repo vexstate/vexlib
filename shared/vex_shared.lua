@@ -1,6 +1,10 @@
-
 Vex = Vex or {}
 Vex.Config = Vex.Config or {}
+Vex.Utils = Vex.Utils or {}
+Vex.World = Vex.World or {}
+Vex.Blip = Vex.Blip or {}
+Vex.Player = Vex.Player or {}
+Vex.Exceptions = Vex.Exceptions or {}
 
 Vex.Config.Version = Config.Version or '0.0.0'
 Vex.Config.Name = Config.Name or 'VexLib'
@@ -17,8 +21,6 @@ function Vex.getExport(name)
     return Vex._exports[name]
 end
 
-function getVersion()
+Vex.registerExport('getVersion', function()
     return Vex.Config.Version
-end
-
-Vex.registerExport('getVersion', getVersion)
+end)
