@@ -1,4 +1,3 @@
-
 ESX = ESX or nil
 
 Citizen.CreateThread(function()
@@ -26,4 +25,19 @@ function Vex.getESXPlayer(sourceOrIdentifier)
     return nil
 end
 
+function Vex.getOXPlayer(sourceOrIdentifier)
+    if type(sourceOrIdentifier) == 'number' then
+        return Player(sourceOrIdentifier)
+    elseif type(sourceOrIdentifier) == 'string' then
+        for _, pid in ipairs(GetPlayers()) do
+            local p = Player(pid)
+            if p and p.identifier == sourceOrIdentifier then
+                return p
+            end
+        end
+    end
+    return nil
+end
+
 Vex.registerExport('getESXPlayer', Vex.getESXPlayer)
+Vex.registerExport('getOXPlayer', Vex.getOXPlayer)
