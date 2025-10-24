@@ -663,3 +663,11 @@ Vex.registerExport('World', Vex.World)
 Vex.registerExport('Utils', Vex.Utils)
 Vex.registerExport('Blip', Vex.Blip)
 Vex.registerExport('IsPlayerAce', Vex.IsPlayerAce)
+
+Vex.registerExport('import', function()
+    local proxy = {}
+    for k,v in pairs(Vex) do
+        proxy[k] = v
+    end
+    return proxy
+end)
