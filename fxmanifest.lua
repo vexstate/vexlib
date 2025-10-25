@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 author 'Matija && Vextstate'
-description 'VexLib - Clean Lua Framework for FiveM (ESX and OX compatible)'
+description 'Vexlib - Clean Lua Framework for FiveM (ESX and OX compatible)'
 version '2.4.5'
 
 shared_script {
