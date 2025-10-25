@@ -19,7 +19,7 @@ It includes ready-to-use systems for:
 - > 🧠 Safe function calls (with crash protection)  
 - > 💬 Reusable chat & notification utilities  
 - > 🔗 Easy export registration for other resources  
-- > 💵 ESX player helpers and examples  
+- > 💵 ESX and OX player helpers and examples  
 
 Built with **professional structure**, **ESX and OX compatibility**, VexLib helps you write cleaner, more modular, and safer server/client code.
 
