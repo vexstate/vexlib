@@ -4,6 +4,7 @@ Config.Version = Config.Version or '2.4.5'
 Config.Name = Config.Name or 'VexLib'
 Config.Locale = Config.Locale or 'en'
 Config.Debug = Config.Debug or false
+Config.Placeholder = Config.Placeholder or 'vexlib'
 
 Vex = Vex or {}
 Vex.Config = Vex.Config or {}
@@ -18,6 +19,7 @@ Vex.Config.Version = Config.Version
 Vex.Config.Name = Config.Name
 Vex.Config.Locale = Config.Locale
 Vex.Config.Debug = Config.Debug
+Vex.Config.Placeholder = Config.Placeholder
 
 local Exceptions = Vex.Exceptions
 
