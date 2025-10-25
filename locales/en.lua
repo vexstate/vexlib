@@ -3,8 +3,10 @@ Locales['en'] = {
     ['welcome'] = 'Welcome to Vexstate!',
     ['goodbye'] = 'See you later!',
     ['Exception'] = 'An unknown error occurred.',
-    ['InvalidTypeException'] = 'Invalid type provided.',
-    ['InvalidValueError'] = 'Invalid value provided.'
+    ['InvalidType'] = 'Invalid type provided.',
+    ['InvalidValue'] = 'Invalid value provided.',
+    ['OK'] = 'Everything is right',
+    ['InvalidArgument'] = 'Invalid argument provided.'
 }
 
 if Vex and Vex.Locale and Vex.Locale.register then
