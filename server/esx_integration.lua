@@ -3,7 +3,6 @@ ESX = ESX or nil
 ESX = exports['es_extended']:getSharedObject()
 print(('VexLib: ESX integration loaded (version: %s)'):format(ESX and 'detected' or 'unknown'))
 
-
 --Citizen.CreateThread(function()
 --    while ESX == nil do
 --        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -12,7 +11,6 @@ print(('VexLib: ESX integration loaded (version: %s)'):format(ESX and 'detected'
 --    print(('VexLib: ESX integration loaded (version: %s)'):format(ESX and
 --    ESX.GetConfig and 'unknown' or 'detected'))
 --end)
-
 
 function Vex.getESXPlayer(sourceOrIdentifier)
     if type(sourceOrIdentifier) == 'number' then
