@@ -44,6 +44,11 @@ Built with **professional structure** and **ESX compatibility**, VexLib helps yo
     # ensure my_little_script
     # ensure ...
     ```
+4. Add following line to server script:
+   ```lua
+   local Vex = exports['vexlib']:import()
+   ```
+> Vex functions are **only** allowed on server-side scripts
 
 ---
 
