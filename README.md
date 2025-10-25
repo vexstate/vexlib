@@ -20,7 +20,7 @@ It includes ready-to-use systems for:
 - > 🔗 Easy export registration for other resources  
 - > 💵 ESX player helpers and examples  
 
-Built with **professional structure** and **ESX compatibility**, VexLib helps you write cleaner, more modular, and safer server/client code.
+Built with **professional structure**, **ESX and OX compatibility**, VexLib helps you write cleaner, more modular, and safer server/client code.
 
 ---
 
