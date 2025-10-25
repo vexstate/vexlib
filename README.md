@@ -36,10 +36,12 @@ Built with **professional structure** and **ESX compatibility**, VexLib helps yo
     ensure vexlib
     ```
 
-3. Make sure **_ESX_** is started before **VexLib** if you want ESX integration:
+3. Make sure **_ESX_** and **_OX_** are started before **VexLib** if you want ESX and OX integration:
     ```bash
     ensure core
     ensure es_extended
+    ensure ox_lib
+    ensure ox_other_scripts
     ensure vexlib
     # ensure my_little_script
     # ensure ...
