@@ -3,6 +3,8 @@ ESX = ESX or nil
 ESX = exports['es_extended']:getSharedObject()
 print(('VexLib: ESX integration loaded (version: %s)'):format(ESX and 'detected' or 'unknown'))
 
+
+-- this below was test for loading
 --Citizen.CreateThread(function()
 --    while ESX == nil do
 --        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -42,4 +44,5 @@ function Vex.getOXPlayer(sourceOrIdentifier)
 end
 
 Vex.registerExport('getESXPlayer', Vex.getESXPlayer)
+
 Vex.registerExport('getOXPlayer', Vex.getOXPlayer)
