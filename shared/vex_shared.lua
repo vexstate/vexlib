@@ -14,7 +14,6 @@ Vex.Blip = Vex.Blip or {}
 Vex.Player = Vex.Player or {}
 Vex.Exceptions = Vex.Exceptions or {}
 Vex._exports = Vex._exports or {}
-
 Vex.Config.Version = Config.Version
 Vex.Config.Name = Config.Name
 Vex.Config.Locale = Config.Locale
@@ -35,3 +34,4 @@ end
 Vex.registerExport('getVersion', function()
     return Vex.Config.Version
 end)
+
