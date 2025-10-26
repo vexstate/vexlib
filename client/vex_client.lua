@@ -1,6 +1,6 @@
 local load_time = 2000
 
--- test >> 
+-- this was loading test 
 
 -- function notify(text)
 --     SetNotificationTextEntry('STRING')
@@ -447,3 +447,4 @@ function Vex.Palette(target, before, after)
     
     return Vex.Locale.get('OK', 'en')
 end
+
