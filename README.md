@@ -86,6 +86,7 @@ Config.Version = '2.4.5'
 Config.Name = 'VexLib'
 Config.Locale = 'en'
 Config.Debug = false
+Config.Inventory = 'OX' -- or ESX
 Config.MaxPlayersSync = 32
 ```
 
