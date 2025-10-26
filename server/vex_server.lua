@@ -663,6 +663,8 @@ Vex.registerExport('World', Vex.World)
 Vex.registerExport('Utils', Vex.Utils)
 Vex.registerExport('Blip', Vex.Blip)
 Vex.registerExport('IsPlayerAce', Vex.IsPlayerAce)
+Vex.registerExport('safeCall', Vex.safeCall)
+Vex.registerExport('CheckPedGroup', Vex.CheckPedGroup)
 
 Vex.registerExport('import', function()
     local proxy = {}
