@@ -1,4 +1,4 @@
-# 🧩 Vexlib — Clean & Modular Lua Framework for FiveM (ESX and OX Compatible)
+# Vexlib — Clean & Modular Lua Framework for FiveM (ESX and OX Compatible)
 
 **Author:** [Matija](https://github.com/n11kol11c)  
 **Version:** 2.4.5  
