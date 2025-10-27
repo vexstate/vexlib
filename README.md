@@ -51,7 +51,7 @@ Built with **professional structure**, **ESX and OX compatibility**, VexLib help
    ```lua
    local Vex = exports['vexlib']:import()
    ```
-> Vex functions are **only** allowed on server-side scripts
+> Vex functions from server/vex_server.lua are **only** allowed on server-side scripts
 
 ---
 
