@@ -1,7 +1,8 @@
 local load_time = 2000
 
--- this was loading test 
+-- this was loading test
 
+---@test
 -- function notify(text)
 --     SetNotificationTextEntry('STRING')
 --     AddTextComponentString(text)
