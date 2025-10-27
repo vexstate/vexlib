@@ -27,7 +27,7 @@ function Vex.Utils:GetTableLen(table)
         count = count + 1
     end
 
-    return count, Exceptions.OK.Locale
+    return count, Exceptions.OK.Locale or 'ok'
 end
 
 function Vex.World:Vector3(x, y, z)
