@@ -73,6 +73,3 @@ function Vex.Throw(exceptionDef, details)
 
     error(msg, 2)
 end
-
-Vex.registerExport('Throw', Vex.Throw)
-Vex.registerExport('Exceptions', Exceptions)
