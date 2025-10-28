@@ -5,7 +5,7 @@ Vexc.Blip = Vexc.Blip or {}
 Vexc.Util = Vexc.Util or {}
 Vexc.Exception = Vexc.Exception or {}
 Vexc.Locale = Vexc.Locale or {}
-Vexc.
+Vexc.TextFormat = Vexc.TextFormat or {}
 Vexc._exports = Vexc._exports or {}
 
 Vexc.Config.MaxPlayers = 48
@@ -14,7 +14,7 @@ Vexc.Config.DefaultLocale = 'en'
 Vexc.Config.DefaultException = 'Exception'
 Vexc.Config.Locale = Vexc.Config.DefaultLocale
 
-function Vexc.registerExport(name, fn)
+function Vexc.RegisterExport(name, fn)
     if type(name) ~= 'string' then
         print("Error: name must be a string")
         return nil
@@ -36,19 +36,19 @@ function Vexc.registerExport(name, fn)
     end
 end
 
-function Vexc.Locale.setDefault()
+function Vexc.Locale.SetDefault()
     Vexc.Config.Locale = Vexc.Config.DefaultLocale
 end
 
-function Vexc.Locale.setDefaultByHand(lang)
+function Vexc.Locale.SetDefaultByHand(lang)
     Vexc.Config.Locale = lang
 end
 
-function Vexc.Locale.register(lang, tbl)
+function Vexc.Locale.Register(lang, tbl)
     cLocales[lang] = tbl
 end
 
-function Vexc.Locale.get(key, lang)
+function Vexc.Locale.Get(key, lang)
     local language = lang or Vex.Config.Locale or 'en'
 
     if cLocales[language] and cLocales[language][key] then
@@ -71,3 +71,17 @@ function Vexc.Config.Modify(obj, value)
     end
 end
 
+function Vexc.TextFormat:Color(name)
+    if type(name) ~= 'string' then
+        return ''
+    end
+
+    local Colors = {
+        ['white'] = '~w~',
+        ['reset'] = '~w~'
+    }
+
+    if Colors[name] then
+        return Colors[name]
+    end
+end
