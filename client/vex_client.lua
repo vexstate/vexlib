@@ -1,4 +1,5 @@
 Vexc = Vexc or {}
+cLocales = cLocales or {}
 Vexc.Config = Vexc.Config or {}
 Vexc.Blip = Vexc.Blip or {}
 Vexc.Util = Vexc.Util or {}
@@ -6,9 +7,11 @@ Vexc.Exception = Vexc.Exception or {}
 Vexc.Locale = Vexc.Locale or {}
 Vexc._exports = Vexc._exports or {}
 
+Vexc.Config.MaxPlayers = 48
 Vexc.Config.AllowDebug = true
 Vexc.Config.DefaultLocale = 'en'
 Vexc.Config.DefaultException = 'Exception'
+Vexc.Config.Locale = Vexc.Config.DefaultLocale
 
 function Vexc.registerExport(name, fn)
     if type(name) ~= 'string' then
@@ -30,4 +33,30 @@ function Vexc.registerExport(name, fn)
     if exports then
         exports(name, fn)
     end
+end
+
+function Vexc.Locale.setDefault()
+    Vexc.Config.Locale = Vexc.Config.DefaultLocale
+end
+
+function Vexc.Locale.setDefaultByHand(lang)
+    Vexc.Config.Locale = lang
+end
+
+function Vexc.Locale.register(lang, tbl)
+    cLocales[lang] = tbl
+end
+
+function Vexc.Locale.get(key, lang)
+    local language = lang or Vex.Config.Locale or 'en'
+
+    if cLocales[language] and cLocales[language][key] then
+        return cLocales[language][key]
+    end
+
+    if cLocales['en'] and cLocales['en'][key] then
+        return cLocales['en'][key]
+    end
+
+    return nil
 end
