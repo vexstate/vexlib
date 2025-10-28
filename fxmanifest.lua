@@ -11,7 +11,7 @@ shared_script {
 }
 
 exports {
-    'import'
+    'proxy', 'global_t'
 }
 
 server_script {
