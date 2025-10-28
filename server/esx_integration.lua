@@ -42,7 +42,3 @@ function Vex.getOXPlayer(sourceOrIdentifier)
     end
     return nil
 end
-
-Vex.registerExport('getESXPlayer', Vex.getESXPlayer)
-
-Vex.registerExport('getOXPlayer', Vex.getOXPlayer)
