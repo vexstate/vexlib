@@ -5,6 +5,7 @@ Vexc.Blip = Vexc.Blip or {}
 Vexc.Util = Vexc.Util or {}
 Vexc.Exception = Vexc.Exception or {}
 Vexc.Locale = Vexc.Locale or {}
+Vexc.
 Vexc._exports = Vexc._exports or {}
 
 Vexc.Config.MaxPlayers = 48
@@ -60,3 +61,13 @@ function Vexc.Locale.get(key, lang)
 
     return nil
 end
+
+function Vexc.Config.Modify(obj, value)
+    if Vexc and Vexc.Config and Vexc.Config[obj] then
+        Vexc.Config[obj] = value
+    else
+        print('No already names provided, just new!')
+        return nil
+    end
+end
+
