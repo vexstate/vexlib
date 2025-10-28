@@ -7,6 +7,7 @@ Config.Debug = Config.Debug or false
 Config.Placeholder = Config.Placeholder or 'vexlib'
 
 Vex = Vex or {}
+Vex.Locale = Vex.Locale or {}
 Vex.Config = Vex.Config or {}
 Vex.Utils = Vex.Utils or {}
 Vex.World = Vex.World or {}
