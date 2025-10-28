@@ -7,6 +7,8 @@ Config.Debug = Config.Debug or false
 Config.Placeholder = Config.Placeholder or 'vexlib'
 
 Vex = Vex or {}
+Vex.Style = Vex.Style or {}
+Vex.Chat = Vex.Chat or {}
 Vex.Locale = Vex.Locale or {}
 Vex.Config = Vex.Config or {}
 Vex.Utils = Vex.Utils or {}
@@ -31,13 +33,3 @@ end
 function Vex.getExport(name)
     return Vex._exports[name]
 end
-
-Vex.registerExport('getVersion', function()
-    return Vex.Config.Version
-end)
-
-setmetatable(Vex, {
-    __newindex = function(_, k, v)
-        error(("Attempt to modify locked table Vex.%s"):format(k), 2)
-    end
-})
