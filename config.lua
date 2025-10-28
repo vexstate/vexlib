@@ -11,4 +11,4 @@ Config.Placeholder = 'vexlib'
 Config.Locale = 'en'
 Config.Debug = false
 Config.Inventory = 'OX' -- or ESX
-Config.MaxPlayersSync = 48 -- 32
+Config.MaxPlayersSync = 32 -- max 48
