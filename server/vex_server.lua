@@ -1,3 +1,29 @@
+Config = Config or {}
+
+Config.Version = Config.Version or '2.4.5'
+Config.Name = Config.Name or 'VexLib'
+Config.Locale = Config.Locale or 'en'
+Config.Debug = Config.Debug or false
+Config.Placeholder = Config.Placeholder or 'vexlib'
+
+Vex = Vex or {}
+Vex.Style = Vex.Style or {}
+Vex.Chat = Vex.Chat or {}
+Vex.Locale = Vex.Locale or {}
+Vex.Config = Vex.Config or {}
+Vex.Utils = Vex.Utils or {}
+Vex.World = Vex.World or {}
+Vex.Blip = Vex.Blip or {}
+Vex.Player = Vex.Player or {}
+Vex.Exceptions = Vex.Exceptions or {}
+Vex._exports = Vex._exports or {}
+Vex.Config.Version = Config.Version
+Vex.Config.Name = Config.Name
+Vex.Config.Locale = Config.Locale
+Vex.Config.Debug = Config.Debug
+Vex.Config.Placeholder = Config.Placeholder
+
+
 local function readonly(t)
     if type(t) ~= "table" then return t end
     return setmetatable({}, {
@@ -255,8 +281,32 @@ Vex.registerCommand('vex_oxgivemoney', function(source, args)
     Vex.ChatNotify(source, ('You gave $%s to player %s.'):format(amount, targetId))
 end, true)
 
-setmetatable(Vex, {
-    __newindex = function(_, k, v)
-        error(("Attempt to modify locked table Vex.%s"):format(k), 2)
-    end
-})
+Vex.registerExport('Config', function() return readonly(Vex.Config) end)
+Vex.registerExport('Locale', function() return readonly(Vex.Locale) end)
+Vex.registerExport('Player', function() return readonly(Vex.Player) end)
+Vex.registerExport('Utils', function() return readonly(Vex.Utils) end)
+Vex.registerExport('World', function() return readonly(Vex.World) end)
+Vex.registerExport('Blip', function() return readonly(Vex.Blip) end)
+Vex.registerExport('Exceptions', function() return readonly(Vex.Exceptions) end)
+Vex.registerExport('Style', function() return readonly(Vex.Style) end)
+Vex.registerExport('Chat', function() return readonly(Vex.Chat) end)
+Vex.registerExport('exception_new', function() return readonly(Vex.Exceptions.new) end)
+Vex.registerExport('getESXPlayer', Vex.getESXPlayer)
+Vex.registerExport('getOXPlayer', Vex.getOXPlayer)
+Vex.registerExport('locale_get', function(k, l) return Vex.Locale.get(k, l) end)
+Vex.registerExport('locale_register', function(lang, tbl) return Vex.Locale.register(lang, tbl) end)
+Vex.registerExport('locale_setDefault', function(lang) return Vex.Locale.setDefault(lang) end)
+Vex.registerExport('getVersion', function() return Vex.Config.Version end)
+Vex.registerExport('Exception_Throw', Vex.Throw)
+Vex.registerExport('IsPlayerAce', Vex.IsPlayerAce)
+Vex.registerExport('IsPlayerGroup', Vex.IsPlayerGroup)
+Vex.registerExport('safeCall', Vex.safeCall)
+Vex.registerExport('CheckPedGroup', Vex.CheckPedGroup)
+
+Vex.registerExport('global_t', function()
+    return Vex
+end)
+
+Vex.registerExport('proxy', function()
+    return deepcopy_readonly(Vex)
+end)
