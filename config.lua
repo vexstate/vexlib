@@ -4,6 +4,8 @@ World = {}
 Blip = {}
 Player = {}
 Exceptions = {}
+Style = {}
+Chat = {}
 
 Config.Version = '2.4.5'
 Config.Name = 'Vexlib'
