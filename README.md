@@ -117,7 +117,9 @@ vexlib/
 │   ├── vex_server.lua
 │   └── esx_integration.lua
 └── client/
-    └── vex_client.lua
+    ├── vex_client.lua
+    └── locales/
+      ├── en.lua
 ```
 
 ---
