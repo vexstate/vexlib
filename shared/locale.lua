@@ -24,7 +24,7 @@ function Vex.Locale.get(key, lang)
     return nil
 end
 
-Vex.registerExport('locale_get', function(k, l) return Vex.Locale.get(k, l)end)
-Vex.registerExport('Locale', Vex.Locale)
-Vex.registerExport('get', Vex.Locale.get)
-Vex.registerExport('register', Vex.Locale.register)
+Vex.registerExport('locale_get', function(k, l) return Vex.Locale.get(k, l) end)
+Vex.registerExport('locale_register', function(lang, tbl) return Vex.Locale.register(lang, tbl) end)
+Vex.registerExport('locale_setDefault', function(lang) return Vex.Locale.setDefault(lang) end)
+Vex.registerExport('Locale', function() return Vex.Locale end)
