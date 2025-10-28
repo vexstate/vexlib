@@ -49,7 +49,18 @@ Built with **professional structure**, **ESX and OX compatibility**, VexLib help
     ```
 4. Add following line to server script:
    ```lua
-   local Vex = exports['vexlib']:import()
+   -- if you want a proxy copy of Vex main table
+   -- use
+   local Vex = exports['vexlib']:proxy()
+
+   -- proxy provides safe copy of Vex table but any changes made in 
+   -- runtime will not be affected on proxy Vex table
+
+   -- if you want to use REAL Vex main table
+   -- that is encrypted and safe from client attacks use
+   local Vex = exports['vexlib']:global_t()
+
+   -- real table is affected before and after runtime
    ```
 > Vex functions from server/vex_server.lua are **only** allowed on server-side scripts
 
