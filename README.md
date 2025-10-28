@@ -119,7 +119,7 @@ vexlib/
 └── client/
     ├── vex_client.lua
     └── locales/
-      ├── en.lua
+        └── en.lua
 ```
 
 ---
