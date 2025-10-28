@@ -36,3 +36,8 @@ Vex.registerExport('getVersion', function()
     return Vex.Config.Version
 end)
 
+setmetatable(Vex, {
+    __newindex = function(_, k, v)
+        error(("Attempt to modify locked table Vex.%s"):format(k), 2)
+    end
+})
