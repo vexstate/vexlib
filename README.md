@@ -62,7 +62,7 @@ Built with **professional structure**, **ESX and OX compatibility**, VexLib help
 
    -- real table is affected before and after runtime
    ```
-> Vex functions from server/vex_server.lua are **only** allowed on server-side scripts
+> Vex functions from server_scripts are **only** allowed on server-side scripts
 
 ---
 
