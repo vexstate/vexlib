@@ -254,3 +254,9 @@ Vex.registerCommand('vex_oxgivemoney', function(source, args)
     Vex.ChatNotify(targetId, ('You received $%s from an admin.'):format(amount))
     Vex.ChatNotify(source, ('You gave $%s to player %s.'):format(amount, targetId))
 end, true)
+
+setmetatable(Vex, {
+    __newindex = function(_, k, v)
+        error(("Attempt to modify locked table Vex.%s"):format(k), 2)
+    end
+})
