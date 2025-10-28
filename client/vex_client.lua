@@ -28,7 +28,7 @@ function Vex.Utils:GetTableLen(table)
         count = count + 1
     end
 
-    return count, Exceptions.OK.Locale or 'ok'
+    return count, Exceptions.OK.Locale
 end
 
 function Vex.World:Vector3(x, y, z)
@@ -448,4 +448,3 @@ function Vex.Palette(target, before, after)
     
     return Vex.Locale.get('OK', 'en')
 end
-
