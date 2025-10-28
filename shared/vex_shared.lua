@@ -25,7 +25,7 @@ local Exceptions = Vex.Exceptions
 
 function Vex.registerExport(name, fn)
     Vex._exports[name] = fn
-    exports(Vex._exports.name or name, Vex._exports.fn or fn)
+    exports(name, fn)
 end
 
 function Vex.getExport(name)
