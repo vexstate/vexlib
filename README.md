@@ -72,18 +72,18 @@ VexLib provides two ways to access the main library table: a safe snapshot or th
 ---
 
 ### 🔹 proxy()
-local Vex = exports['vexlib']:proxy()
-Creates a read-only copy of the Vex table.
-❌ Cannot modify; changes to the server’s table won’t appear.
-✅ Safe for client scripts or modules that only need to read data.
+- local Vex = exports['vexlib']:proxy()
+- Creates a read-only copy of the Vex table.
+- ❌ Cannot modify; changes to the server’s table won’t appear.
+- ✅ Safe for client scripts or modules that only need to read data.
 
 ---
 
 ### 🔹 global_t()
-local Vex = exports['vexlib']:global_t()
-Returns the actual server-side Vex table.
-✅ Modifications affect the live library immediately.
-❌ Server-only; clients cannot access or modify it.
+- local Vex = exports['vexlib']:global_t()
+- Returns the actual server-side Vex table.
+- ✅ Modifications affect the live library immediately.
+- ❌ Server-only; clients cannot access or modify it.
 
 ---
 
@@ -95,7 +95,7 @@ global_t()    | Live table    | ✅ Yes      | ✅ Yes                     | ❌
 
 ---
 
-### 💡 Tip: Use proxy() for safe read-only access and global_t() when you need full server control.
+> 💡 Tip: Use proxy() for safe read-only access and global_t() when you need full server control.
 
 ---
 
