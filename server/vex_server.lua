@@ -684,7 +684,7 @@ Vex.registerExport('IsPlayerGroup', Vex.IsPlayerGroup)
 Vex.registerExport('safeCall', Vex.safeCall)
 Vex.registerExport('CheckPedGroup', Vex.CheckPedGroup)
 
-Vex.registerExport('import', function()
+Vex.registerExport('proxy', function()
     local proxy = {}
     for k,v in pairs(Vex) do
         proxy[k] = v
