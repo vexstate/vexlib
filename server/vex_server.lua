@@ -1,3 +1,16 @@
+local function readonly(t)
+    if type(t) ~= "table" then return t end
+    return setmetatable({}, {
+        __index = t,
+        __newindex = function(_, _, _)
+            error("Attempt to modify read-only table")
+        end,
+        __pairs = function() return pairs(t) end,
+        __ipairs = function() return ipairs(t) end,
+        __metatable = false
+    })
+end
+
 function Vex.safeCall(fn, ...)
     local ok, res = pcall(fn, ...)
 
