@@ -8,14 +8,15 @@ exports {
     'proxy', 'global_t'
 }
 
-server_script {
+server_scripts {
     'config.lua',
-    'server/vex_exports.lua',
-    'server/esx_integration.lua',
     'server/vex_server.lua',
     'shared/vex_shared.lua',
     'shared/exceptions.lua',
-    'shared/locale.lua',
+    'server/esx_integration.lua',
+    'shared/locale.lua'
 }
 
-client_script 'client/vex_client.lua'
+client_scripts {
+    'client/vex_client.lua'
+}
