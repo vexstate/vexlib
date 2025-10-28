@@ -701,6 +701,10 @@ Vex.registerExport('IsPlayerGroup', Vex.IsPlayerGroup)
 Vex.registerExport('safeCall', Vex.safeCall)
 Vex.registerExport('CheckPedGroup', Vex.CheckPedGroup)
 
-Vex.registerExport('import', function()
+Vex.registerExport('global_t', function()
+    return readonly(Vex)
+end)
+
+Vex.registerExport('proxy', function()
     return deepcopy_readonly(Vex)
 end)
