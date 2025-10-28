@@ -27,3 +27,4 @@ end
 Vex.registerExport('locale_get', function(k, l) return Vex.Locale.get(k, l)end)
 Vex.registerExport('Locale', Vex.Locale)
 Vex.registerExport('get', Vex.Locale.get)
+Vex.registerExport('register', Vex.Locale.register)
