@@ -670,12 +670,17 @@ Vex.registerCommand('vex_oxgivemoney', function(source, args)
     Vex.ChatNotify(source, ('You gave $%s to player %s.'):format(amount, targetId))
 end, true)
 
-Vex.registerExport('getConfig', Vex.Config)
-Vex.registerExport('Player', Vex.Player)
-Vex.registerExport('World', Vex.World)
-Vex.registerExport('Utils', Vex.Utils)
-Vex.registerExport('Blip', Vex.Blip)
+Vex.registerExport('Config', function() return readonly(Vex.Config) end)
+Vex.registerExport('Locale', function() return readonly(Vex.Locale) end)
+Vex.registerExport('Player', function() return readonly(Vex.Player) end)
+Vex.registerExport('Utils', function() return readonly(Vex.Utils) end)
+Vex.registerExport('World', function() return readonly(Vex.World) end)
+Vex.registerExport('Blip', function() return readonly(Vex.Blip) end)
+Vex.registerExport('Exceptions', function() return readonly(Vex.Exceptions) end)
+
+Vex.registerExport('Throw', Vex.Throw)
 Vex.registerExport('IsPlayerAce', Vex.IsPlayerAce)
+Vex.registerExport('IsPlayerGroup', Vex.IsPlayerGroup)
 Vex.registerExport('safeCall', Vex.safeCall)
 Vex.registerExport('CheckPedGroup', Vex.CheckPedGroup)
 
@@ -684,5 +689,5 @@ Vex.registerExport('import', function()
     for k,v in pairs(Vex) do
         proxy[k] = v
     end
-    return proxy
+    return readonly(proxy)
 end)
