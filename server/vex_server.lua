@@ -11,6 +11,23 @@ local function readonly(t)
     })
 end
 
+local function deepcopy_readonly(t)
+    if type(t) ~= "table" then return t end
+
+    local proxy = {}
+    for k, v in pairs(t) do
+        proxy[k] = deepcopy_readonly(v)  -- recursively wrap nested tables
+    end
+
+    return setmetatable({}, {
+        __index = proxy,
+        __newindex = function() error("Attempt to modify read-only table") end,
+        __pairs = function() return pairs(proxy) end,
+        __ipairs = function() return ipairs(proxy) end,
+        __metatable = false
+    })
+end
+
 function Vex.safeCall(fn, ...)
     local ok, res = pcall(fn, ...)
 
