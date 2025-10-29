@@ -45,7 +45,7 @@ Built with **professional structure**, **ESX and OX compatibility**, VexLib help
     ensure ox_other_scripts
     ensure vexlib
     # ensure my_little_script
-    # ensure ...
+    # ensure [...]
     ```
 4. Add following line to server script:
    ```lua
