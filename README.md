@@ -10,7 +10,7 @@
 
 ## ✨ Overview
 
-**VexLib** is a lightweight, modular Lua utility framework for **FiveM** that provides a clean, standardized way to build scripts and manage shared logic across multiple resources.  
+**_vexlib_** is a lightweight, modular Lua utility framework for **FiveM** that provides a clean, standardized way to build scripts and manage shared logic across multiple resources.  
 
 It includes ready-to-use systems for:
 - > ⚙️ Config management and exportable metadata  
