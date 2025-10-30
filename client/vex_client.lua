@@ -7,12 +7,17 @@ Vexc.Exception = Vexc.Exception or {}
 Vexc.Locale = Vexc.Locale or {}
 Vexc.TextFormat = Vexc.TextFormat or {}
 Vexc._exports = Vexc._exports or {}
+Exception = Vexc.Exception or {}
 
 Vexc.Config.MaxPlayers = 48
 Vexc.Config.AllowDebug = true
 Vexc.Config.DefaultLocale = 'en'
 Vexc.Config.DefaultException = 'Exception'
 Vexc.Config.Locale = Vexc.Config.DefaultLocale
+
+local metabase = {
+    __index = function(t,k) return rawget(t,k) end
+}
 
 function Vexc.RegisterExport(name, fn)
     if type(name) ~= 'string' then
@@ -71,17 +76,31 @@ function Vexc.Config.Modify(obj, value)
     end
 end
 
-function Vexc.TextFormat:Color(name)
-    if type(name) ~= 'string' then
-        return ''
+function Vexc.TextFormat:Label(table, label)
+    if type(table) ~= 'table' then
+        print('Invalid data type: table')
     end
 
-    local Colors = {
-        ['white'] = '~w~',
-        ['reset'] = '~w~'
-    }
-
-    if Colors[name] then
-        return Colors[name]
+    if type(label) ~= 'string' then
+        print('Invalid data type: string')
     end
+
+    if Vexc and Labels and Labels[table] then
+        for _, v in pairs(Labels[table]) do
+            if not Labels[table][label] then
+                return nil
+            end
+        end
+    end
+
+    return Labels[table][label]
+end
+
+function Exception:Drop(typeName, localeKey, details)
+    local obj = setmetatable({}, metabase)
+    obj.Type = typeName or 'Vexc.Exception'
+    obj.Locale = localeKey or Vexc.Config.DefaultException
+    obj.Details = details
+
+    return obj
 end
