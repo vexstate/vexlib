@@ -2,7 +2,7 @@
 
 **Author:** [Matija](https://github.com/n11kol11c)  
 **Version:** 2.4.5  
-**Framework Compatibility:** ESX Legacy / ESX 1.x / OX / ox_lib 
+**Framework Compatibility:** ESX Legacy / ESX 1.x / OX / ox_lib / ox_target
 
 **License:** MIT  
 
