@@ -129,11 +129,12 @@ vexlib/
 All main settings are defined in _config.lua_:
 ```lua
 Config.Version = '2.4.5'
-Config.Name = 'VexLib'
+Config.Name = 'Vexlib'
+Config.Placeholder = 'vexlib'
 Config.Locale = 'en'
 Config.Debug = false
 Config.Inventory = 'OX' -- or ESX
-Config.MaxPlayersSync = 32
+Config.MaxPlayersSync = 32 -- max 48
 ```
 
 > You can override these values or access them dynamically from other resources via exports.
