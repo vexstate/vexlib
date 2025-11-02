@@ -42,7 +42,7 @@ local function deepcopy_readonly(t)
 
     local proxy = {}
     for k, v in pairs(t) do
-        proxy[k] = deepcopy_readonly(v)  -- recursively wrap nested tables
+        proxy[k] = deepcopy_readonly(v)
     end
 
     return setmetatable({}, {
