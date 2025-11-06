@@ -1,5 +1,5 @@
 cLocales = cLocales or {}
 
 cLocales['en'] = {
-    ['welcome'] = 'Welcome to Vexstate MP!'
+    ['welcome_minimal'] = 'Welcome to Vexstate MP!'
 }
