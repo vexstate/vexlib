@@ -104,3 +104,27 @@ function Exception:Drop(typeName, localeKey, details)
 
     return obj
 end
+
+function Exception:Get(label)
+    if not Exception then
+        error('No valid table found', 1)
+    end
+
+    if not Exception[label] or not Exception[label][value] then
+        error('No valid table member nor value found', 2)
+    end
+
+    return Exception[label][0]
+end
+
+function Exception.Error(msg, lvl)
+    if type(msg) ~= 'string' then
+        return nil
+    end
+
+    if type(lvl) ~= 'number' then
+        return nil
+    end
+
+    return error(msg, lvl)
+end
