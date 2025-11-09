@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+
 Vexc = Vexc or {}
 cLocales = cLocales or {}
 Vexc.Config = Vexc.Config or {}
@@ -17,6 +19,13 @@ Vexc.Config.Locale = Vexc.Config.DefaultLocale
 
 local metabase = {
     __index = function(t,k) return rawget(t,k) end
+}
+
+Exception = {
+    ['ERROR'] = 'error',
+    ['OK'] = 'ok',
+    ['WARNING'] = 'warning',
+    ['ABORT'] = 'abort'
 }
 
 function Vexc.RegisterExport(name, fn)
@@ -96,7 +105,7 @@ function Vexc.TextFormat:Label(table, label)
     return Labels[table][label]
 end
 
-function Exception:Drop(typeName, localeKey, details)
+function Exception:Make(typeName, localeKey, details)
     local obj = setmetatable({}, metabase)
     obj.Type = typeName or 'Vexc.Exception'
     obj.Locale = localeKey or Vexc.Config.DefaultException
@@ -117,7 +126,7 @@ function Exception:Get(label)
     return Exception[label][0]
 end
 
-function Exception.Error(msg, lvl)
+function Exception:ThrowProgramError(msg, lvl)
     if type(msg) ~= 'string' then
         return nil
     end
@@ -126,5 +135,25 @@ function Exception.Error(msg, lvl)
         return nil
     end
 
+    local lvl = lvl or 0
+    local msg = msg or Exception:Get('OK') or 'ok'
+
     return error(msg, lvl)
+end
+
+function Exception:ThrowConsoleError(msg, label)
+    local v = { msg = msg, label = label }
+
+    for _, x in pairs(v) do
+        if type(x) ~= 'string' then
+            return -1, nil
+        end
+    end
+
+    local l = Exception:Get(tostring(label)) or 'ok'
+    local msg = msg or 'Error occurred.'
+
+    print("["..l.."]".." "..msg)
+
+    return 0, true
 end
