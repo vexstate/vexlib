@@ -1,5 +1,5 @@
-cLocales = cLocales or {}
+CLocales = CLocales or {}
 
-cLocales['en'] = {
+CLocales['en'] = {
     ['welcome_minimal'] = 'Welcome to Vexstate MP!'
 }
