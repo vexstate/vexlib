@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-global
 
 Vexc = Vexc or {}
-cLocales = cLocales or {}
+CLocales = CLocales or {}
 Vexc.Config = Vexc.Config or {}
 Vexc.Blip = Vexc.Blip or {}
 Vexc.Util = Vexc.Util or {}
@@ -57,18 +57,18 @@ function Vexc.Locale.SetDefaultByHand(lang)
 end
 
 function Vexc.Locale.Register(lang, tbl)
-    cLocales[lang] = tbl
+    CLocales[lang] = tbl
 end
 
 function Vexc.Locale.Get(key, lang)
     local language = lang or Vex.Config.Locale or 'en'
 
-    if cLocales[language] and cLocales[language][key] then
-        return cLocales[language][key]
+    if CLocales[language] and CLocales[language][key] then
+        return CLocales[language][key]
     end
 
-    if cLocales['en'] and cLocales['en'][key] then
-        return cLocales['en'][key]
+    if CLocales['en'] and CLocales['en'][key] then
+        return CLocales['en'][key]
     end
 
     return nil
