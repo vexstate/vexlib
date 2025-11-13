@@ -21,10 +21,12 @@ client_exports {
 server_scripts {
     'config.lua',
     'server/vex_server.lua',
+    'shared/locale.lua',
+    'locales/en.lua',
+    'locales/es.lua',
     'shared/vex_shared.lua',
     'shared/exceptions.lua',
     'server/esx_integration.lua',
-    'shared/locale.lua'
 }
 
 client_scripts {
