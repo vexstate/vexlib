@@ -23,6 +23,22 @@ Vex.Config.Locale = Config.Locale
 Vex.Config.Debug = Config.Debug
 Vex.Config.Placeholder = Config.Placeholder
 
+Vexc = Vexc or {}
+cLocales = cLocales or {}
+Vexc.Config = Vexc.Config or {}
+Vexc.Blip = Vexc.Blip or {}
+Vexc.Util = Vexc.Util or {}
+Vexc.Exception = Vexc.Exception or {}
+Vexc.Locale = Vexc.Locale or {}
+Vexc.TextFormat = Vexc.TextFormat or {}
+Vexc._exports = Vexc._exports or {}
+Exception = Vexc.Exception or {}
+
+Vexc.Config.MaxPlayers = 48
+Vexc.Config.AllowDebug = true
+Vexc.Config.DefaultLocale = 'en'
+Vexc.Config.DefaultException = 'Exception'
+Vexc.Config.Locale = Vexc.Config.DefaultLocale
 
 local function readonly(t)
     if type(t) ~= "table" then return t end
