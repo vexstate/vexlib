@@ -71,5 +71,5 @@ function Vex.Throw(exceptionDef, details)
         msg = '['..ex.Type..'] ' .. tostring(dt or '')
     end
 
-    error(msg, 2)
+    error(tostring(msg), 2)
 end
