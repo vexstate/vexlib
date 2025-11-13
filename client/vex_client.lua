@@ -45,9 +45,7 @@ function Vexc.RegisterExport(name, fn)
 
     Vexc._exports[name] = fn
 
-    if exports then
-        exports(name, fn)
-    end
+    exports(name, fn)
 end
 
 function Vexc.Locale.SetDefault()
@@ -157,3 +155,7 @@ function Exception:ThrowConsoleError(msg, label)
 
     return 0, true
 end
+
+Vexc.RegisterExport('client_t', function ()
+    return Vexc
+end)
