@@ -22,14 +22,3 @@ Vex.Config.Name = Config.Name
 Vex.Config.Locale = Config.Locale
 Vex.Config.Debug = Config.Debug
 Vex.Config.Placeholder = Config.Placeholder
-
-local Exceptions = Vex.Exceptions
-
-function Vex.registerExport(name, fn)
-    Vex._exports[name] = fn
-    exports(name, fn)
-end
-
-function Vex.getExport(name)
-    return Vex._exports[name]
-end
