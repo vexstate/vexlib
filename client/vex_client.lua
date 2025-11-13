@@ -83,6 +83,17 @@ function Vexc.Config.Modify(obj, value)
     end
 end
 
+function Vexc.Util:Vector3(x, y, z)
+    if type(x) ~= 'number' or type(y) ~= 'number' or type(z) ~= 'number' then
+        local errMsg = Vexc.Exception.Get('InvalidType')
+        print("[Vexlib] Vector3 error: " .. tostring(errMsg))
+        return nil
+    end
+
+    return { x = x, y = y, z = z }
+end
+
+
 function Vexc.TextFormat:Label(table, label)
     if type(table) ~= 'table' then
         print('Invalid data type: table')
@@ -112,17 +123,14 @@ function Exception:Make(typeName, localeKey, details)
     return obj
 end
 
-function Exception:Get(label)
-    if not Exception then
-        error('No valid table found', 1)
+function Vexc.Exception.Get(label)
+    if not label then
+        return Vexc.Exception['Exception'] or 'Unknown error'
     end
 
-    if not Exception[label] or not Exception[label][value] then
-        error('No valid table member nor value found', 2)
-    end
-
-    return Exception[label][0]
+    return Vexc.Exception[label] or Vexc.Exception['Exception'] or 'Unknown error'
 end
+
 
 function Exception:ThrowProgramError(msg, lvl)
     if type(msg) ~= 'string' then
