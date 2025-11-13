@@ -4,8 +4,18 @@ author 'Matija && Vextstate'
 description 'Vexlib - Clean Lua Framework for FiveM (ESX and OX compatible)'
 version '2.4.5'
 
-exports {
-    'proxy', 'global_t'
+-- exports {
+--     'proxy', 'global_t', 'client_t'
+-- }
+-- 
+
+server_exports {
+    'proxy',
+    'global_t'
+}
+
+client_exports {
+    'client_t'
 }
 
 server_scripts {
