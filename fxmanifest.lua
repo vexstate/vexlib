@@ -30,5 +30,7 @@ server_scripts {
 }
 
 client_scripts {
-    'client/vex_client.lua'
+    'client/vex_client.lua',
+    'client/label/label.lua',
+    'client/locales/en.lua'
 }
