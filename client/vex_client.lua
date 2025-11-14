@@ -164,6 +164,361 @@ function Exception:ThrowConsoleError(msg, label)
     return 0, true
 end
 
+function Vexc.Blip:Make(
+    spriteId,
+    posx, posy, posz,
+    size, color,
+    textType, placeholder,
+    displayBehaviour
+)
+    local blip = AddBlipForCoord(posx, posy, posz)
+
+    SetBlipSprite(blip, spriteId)
+    SetBlipDisplay(blip, displayBehaviour)
+    SetBlipScale(blip, size)
+    SetBlipColour(blip, color)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName(textType)
+    AddTextComponentSubstringPlayerName(placeholder)
+    EndTextCommandSetBlipName(blip)
+    return blip
+end
+
+function Vexc.Blip:SafeMake(
+    spriteId,
+    posx, posy, posz,
+    size, color,
+    textType, placeholder,
+    displayBehaviour
+)
+    local blip = AddBlipForCoord(posx, posy, posz)
+
+    SetBlipSprite(blip, spriteId)
+    SetBlipDisplay(blip, displayBehaviour)
+    SetBlipScale(blip, size)
+    SetBlipColour(blip, color)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName(textType)
+    AddTextComponentSubstringPlayerName(placeholder)
+    EndTextCommandSetBlipName(blip)
+
+    if blip then
+        return blip, Exceptions.OK.Locale or 'ok'
+    else
+        return nil, Exceptions.InvalidValueError.Locale
+    end
+end
+
+function Vexc.Blip:Construct(
+    __type,
+    __sprite,
+    posX, posY, posZ,
+    placeholder,
+    color, alpha,
+    displayBh,
+    scale,
+    range,
+    width, height,
+    entity,
+    radius,
+    pickup
+)
+    if
+        not __type
+        or type(posX) ~= "number"
+        or type(posY) ~= "number"
+        or type(posZ) ~= "number"
+    then
+        return nil
+    end
+
+    local blip
+
+    displayBh = displayBh or 4
+    scale = scale or 0.8
+    color = color or 2
+    alpha = alpha or 128
+    posZ = posZ or 0.0
+
+    if __type == "coords" and posX and posY and posZ then
+        blip = AddBlipForCoord(posX, posY, posZ)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "area" and height and width and alpha
+        and posX and posY and posZ
+    then
+        blip = AddBlipForArea(posX, posY, posZ, width, height)
+        SetBlipColour(blip, color)
+        SetBlipAlpha(blip, alpha or 128)
+
+    elseif __type == "entity" and entity and posX and posY and posZ then
+        blip = AddBlipForEntity(entity)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "pickup" and pickup and posX and posY and posZ then
+        blip = AddBlipForPickup(pickup)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "radius" and radius and posX and posY and posZ then
+        blip = AddBlipForRadius(posX, posY, posZ, radius)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+    end
+
+    if blip and placeholder and posX and posY and posZ then
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(placeholder)
+        EndTextCommandSetBlipName(blip)
+    end
+
+    return blip
+end
+
+function Vexc.Blip:SafeConstruct(
+    __type,
+    __sprite,
+    posX, posY, posZ,
+    placeholder,
+    color, alpha,
+    displayBh,
+    scale,
+    range,
+    width, height,
+    entity,
+    radius,
+    pickup
+)
+    if
+        not __type
+        or type(posX) ~= "number"
+        or type(posY) ~= "number"
+        or type(posZ) ~= "number"
+    then
+        return nil, Exceptions.InvalidTypeException.Locale
+    end
+
+    local blip
+
+    displayBh = displayBh or 4
+    scale = scale or 0.8
+    color = color or 2
+    alpha = alpha or 128
+    posZ = posZ or 0.0
+
+    if __type == "coords" and posX and posY and posZ then
+        blip = AddBlipForCoord(posX, posY, posZ)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "area" and height and width and alpha
+        and posX and posY and posZ
+    then
+        blip = AddBlipForArea(posX, posY, posZ, width, height)
+        SetBlipColour(blip, color)
+        SetBlipAlpha(blip, alpha or 128)
+
+    elseif __type == "entity" and entity and posX and posY and posZ then
+        blip = AddBlipForEntity(entity)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "pickup" and pickup and posX and posY and posZ then
+        blip = AddBlipForPickup(pickup)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+
+    elseif __type == "radius" and radius and posX and posY and posZ then
+        blip = AddBlipForRadius(posX, posY, posZ, radius)
+        SetBlipSprite(blip, __sprite or 1)
+        SetBlipDisplay(blip, displayBh)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, range)
+    end
+
+    if blip and placeholder and posX and posY and posZ then
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(placeholder)
+        EndTextCommandSetBlipName(blip)
+    end
+
+    return blip, Exceptions.OK.Locale
+end
+
+function Vex.Blip:ConstructTable(tbl)
+    if type(tbl) ~= "table" then
+        return nil
+    end
+
+    local blip
+    local __type = tbl.type or "coords"
+    local posX, posY, posZ = tbl.x or 0.0, tbl.y or 0.0, tbl.z or 0.0
+    local sprite = tbl.sprite or 1
+    local color = tbl.color or 2
+    local alpha = tbl.alpha or 128
+    local display = tbl.display or 4
+    local scale = tbl.scale or 0.8
+    local label = tbl.label or __type
+    local entity = tbl.entity
+    local radius = tbl.radius
+    local width = tbl.width
+    local height = tbl.height
+    local pickup = tbl.pickup
+
+    if __type == "coords" then
+        blip = AddBlipForCoord(posX, posY, posZ)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "area"
+    and height and width and color and alpha and posX and posY and posZ
+    then
+        blip = AddBlipForArea(posX, posY, posZ, width, height)
+        SetBlipColour(blip, color)
+        SetBlipAlpha(blip, alpha)
+
+    elseif __type == "entity" and entity and sprite and display and scale and color
+    then
+        blip = AddBlipForEntity(entity)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "pickup" and pickup and sprite and display and scale and color
+    then
+        blip = AddBlipForPickup(pickup)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "radius" and radius
+    then
+        blip = AddBlipForRadius(posX, posY, posZ, radius)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+    else
+        StaticError("[Error] Invalid or incomplete blip configuration.", false)
+        return nil
+    end
+
+    if blip and label then
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(label)
+        EndTextCommandSetBlipName(blip)
+    end
+    return blip
+end
+
+function Vex.Blip:SafeConstructTable(tbl)
+    if type(tbl) ~= "table" then
+        return nil, Exceptions.InvalidTypeException.Locale
+    end
+
+    local blip
+    local __type = tbl.type or "coords"
+    local posX, posY, posZ = tbl.x or 0.0, tbl.y or 0.0, tbl.z or 0.0
+    local sprite = tbl.sprite or 1
+    local color = tbl.color or 2
+    local alpha = tbl.alpha or 128
+    local display = tbl.display or 4
+    local scale = tbl.scale or 0.8
+    local label = tbl.label or __type
+    local entity = tbl.entity
+    local radius = tbl.radius
+    local width = tbl.width
+    local height = tbl.height
+    local pickup = tbl.pickup
+
+    if __type == "coords" then
+        blip = AddBlipForCoord(posX, posY, posZ)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "area"
+    and height and width and color and alpha and posX and posY and posZ
+    then
+        blip = AddBlipForArea(posX, posY, posZ, width, height)
+        SetBlipColour(blip, color)
+        SetBlipAlpha(blip, alpha)
+
+    elseif __type == "entity" and entity and sprite and display and scale and color
+    then
+        blip = AddBlipForEntity(entity)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "pickup" and pickup and sprite and display and scale and color
+    then
+        blip = AddBlipForPickup(pickup)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+
+    elseif __type == "radius" and radius
+    then
+        blip = AddBlipForRadius(posX, posY, posZ, radius)
+        SetBlipSprite(blip, sprite)
+        SetBlipDisplay(blip, display)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipAsShortRange(blip, true)
+    else
+        StaticError("[Error] Invalid or incomplete blip configuration.", false)
+        return nil
+    end
+
+    if blip and label then
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(label)
+        EndTextCommandSetBlipName(blip)
+    end
+
+    return blip, Exceptions.OK.Locale
+end
+
+
 Vexc.RegisterExport('client_t', function ()
     return Vexc
 end)
