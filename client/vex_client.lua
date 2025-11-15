@@ -11,6 +11,7 @@ Vexc.TextFormat = Vexc.TextFormat or {}
 Vexc._exports = Vexc._exports or {}
 Exception = Vexc.Exception or {}
 
+
 Vexc.Config.MaxPlayers = 48
 Vexc.Config.AllowDebug = true
 Vexc.Config.DefaultLocale = 'en'
@@ -522,3 +523,4 @@ end
 Vexc.RegisterExport('client_t', function ()
     return Vexc
 end)
+
