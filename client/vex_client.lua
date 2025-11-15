@@ -369,7 +369,7 @@ function Vexc.Blip:SafeConstruct(
     return blip, Exceptions.OK.Locale
 end
 
-function Vex.Blip:ConstructTable(tbl)
+function Vexc.Blip:ConstructTable(tbl)
     if type(tbl) ~= "table" then
         return nil
     end
@@ -443,7 +443,7 @@ function Vex.Blip:ConstructTable(tbl)
     return blip
 end
 
-function Vex.Blip:SafeConstructTable(tbl)
+function Vexc.Blip:SafeConstructTable(tbl)
     if type(tbl) ~= "table" then
         return nil, Exceptions.InvalidTypeException.Locale
     end
