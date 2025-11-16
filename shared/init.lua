@@ -1,39 +1,30 @@
 EVX = EVX or {}
 EVX.env = EVX.env or (IsDuplicityVersion() and 'server' or 'client')
 
-EVX.meta = EVX.meta or {
-    name = 'vexlib',
-    version = '3.0.0',
-    author = 'Matija && Vexstate'
-}
+EVX.meta = { version = "3.0.0", author = "Matija" }
 
-EVX._modules = EVX._modules or {}
-EVX._exports = EVX._exports or {}
+if EVX.env == 'server' then
+    EVX._modules = EVX._modules or {}
+    EVX._exports = EVX._exports or {}
+    EVX._functions = EVX._functions or {}
+
+    EVX._exports = setmetatable({}, {
+        __newindex = function()
+            error("Cannot modify exports directly!")
+        end})
+
+    function EVX.registerExport(name, fn)
+        if type(name) ~= 'string' or type(fn) ~= 'function' then return end
+        if EVX._exports[name] then return end
+        EVX._exports[name] = fn
+        exports(name, fn)
+    end
+end
 
 function EVX.isEnv(env)
     if EVX.env ~= env then
         return -1
     else return 0 end
-end
-
-function EVX.registerExport(name, fn)
-    if type(name) ~= 'string' then
-        print("Error: name must be a string")
-        return nil
-    end
-    if type(fn) ~= 'function' then
-        print("Error: fn must be a function")
-        return nil
-    end
-
-    if EVX._exports[name] then
-        print('Export with name ' .. tostring(name) .. ' already exists')
-        return nil
-    end
-
-    EVX._exports[name] = fn
-
-    exports(name, fn)
 end
 
 function EVX.getExport(name)
