@@ -8,5 +8,6 @@ Labels['visual'] = {
     ['condensed_open'] = '<C>',
     ['condensed_close'] = '</C>',
     ['noreturn'] = '~nrt~',
-    ['R*'] = '~EX_R*~'
+    ['R*'] = '~EX_R*~',
+    ['rstar'] = '~EX_R*~'
 }
