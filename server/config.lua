@@ -1,0 +1,1 @@
+VConfig = VConfig or {}
