@@ -141,7 +141,7 @@ Config.MaxPlayersSync = 32 -- max 48
 
 ---
 
-## 🌐 Localization System
+# 🌐 Localization System
 
 VexLib includes a simple **locale manager** with English (`en`) and Spanish (`es`) translations by default.
 
