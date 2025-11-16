@@ -17,7 +17,6 @@ Vexc.Config.AllowDebug = true
 Vexc.Config.DefaultLocale = 'en'
 Vexc.Config.DefaultException = 'Exception'
 Vexc.Config.Locale = Vexc.Config.DefaultLocale
-
 local metabase = {
     __index = function(t,k) return rawget(t,k) end
 }
@@ -523,4 +522,5 @@ end
 Vexc.RegisterExport('client_t', function ()
     return Vexc
 end)
+
 
