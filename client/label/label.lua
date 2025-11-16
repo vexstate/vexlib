@@ -1,4 +1,5 @@
 Labels = Labels or {}
+Vexc.Labels = Vexc.Labels or {}
 
 Labels['visual'] = {
     ['break'] = '~n~',
