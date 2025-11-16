@@ -3,10 +3,168 @@
 EVX = EVX or {}
 EVX.utils = EVX.utils or {}
 EVX.blip = EVX.blip or {}
+EVX.string = EVX.string or {}
+EVX.table = EVX.table or {}
+EVX.format = EVX.format or {}
+EVX.meta = EVX.meta or {}
 
-function EVX.utils.print(argc, ...)
+EVX.string._blank = ("")
+EVX.string._space = (" ")
+EVX.string._blank = EVX.string._blank or ""
+EVX.string._space = EVX.string._space or " "
+
+function EVX.table.isEmpty(tbl)
+    return next(tbl) == nil
+end
+
+function EVX.table.length(tbl)
+    local count = 0
+    for _ in pairs(tbl) do count = count + 1 end
+    return count
+end
+
+function EVX.table.print(tbl, indent)
+    indent = indent or 0
+    for k, v in pairs(tbl) do
+        local formatting = string.rep("  ", indent) .. k .. ": "
+        if type(v) == "table" then
+            print(formatting)
+            EVX.table.print(v, indent + 1)
+        else
+            print(formatting .. tostring(v))
+        end
+    end
+end
+
+function EVX.table.contains(tbl, value)
+    for _, v in pairs(tbl) do
+        if v == value then return true end
+    end
+    return false
+end
+
+function EVX.table.merge(t1, t2)
+    local t = {}
+    for k, v in pairs(t1) do t[k] = v end
+    for k, v in pairs(t2) do t[k] = v end
+    return t
+end
+
+--- @param str string
+--- @return string|nil
+function EVX.string.reverse(str)
+    local t = {}
+
+    for i = #str, 1, -1 do
+        t[#t+1] = string.sub(str, i, i)
+    end
+
+    return table.concat(t)
+end
+
+--- @param str string
+function EVX.string.trim(str)
+    return str:match("^%s*(.-)%s*$")
+end
+
+--- @param str string
+function EVX.string.toupper(str)
+    return string.upper(str or "")
+end
+
+--- @param str string
+function EVX.string.tolower(str)
+    return string.lower(str or "")
+end
+
+--- @param str string
+function EVX.string.capitalize(str)
+    str = str or ""
+    return str:gsub("^%l", string.upper)
+end
+
+--- @param str string
+--- @param sep string
+function EVX.string.split(str, sep)
+    sep = sep or "%s"
+    local t = {}
+    for s in string.gmatch(str, "([^"..sep.."]+)") do
+        t[#t+1] = s
+    end
+    return t
+end
+
+--- @param str string
+--- @param startStr string
+function EVX.string.startswith(str, startStr)
+    str = str or ""
+    startStr = startStr or ""
+    return str:sub(1, #startStr) == startStr
+end
+
+--- @param str string
+--- @param endStr string
+function EVX.string.endswith(str, endStr)
+    str = str or ""
+    endStr = endStr or ""
+    return str:sub(-#endStr) == endStr
+end
+
+--- @param str string
+--- @param old string
+--- @param new string
+function EVX.string.replace(str, old, new)
+    str = str or ""
+    old = old or ""
+    new = new or ""
+    return str:gsub(old, new)
+end
+
+--- @param str string
+--- @param sub string
+function EVX.string.count(str, sub)
+    str = str or ""
+    sub = sub or ""
+    local _, n = str:gsub(sub, "")
+    return n
+end
+
+--- @param str string
+function EVX.string.empty(str)
+    return str == nil or str == "" or str == " "
+end
+
+function EVX.utils.inform(argc, ...)
     print(argc, ...)
 end
+
+--- @param text string
+--- @param color string
+--- @return string
+function EVX.format.color(text, color)
+    local code = EVX.format.colors[color] or "^7"
+    return code .. tostring(text)
+end
+
+--- @param text string
+--- @return string
+function EVX.format.symbolize(text)
+    local t = tostring(text):gsub("~(.-)~", function(sym)
+        return EVX.format.symbols[sym] or sym
+    end)
+    return t
+end
+
+--- @return table
+function EVX.format.getColors()
+    return EVX.format.colors
+end
+
+--- @return table
+function EVX.format.getSymbols()
+    return EVX.format.symbols
+end
+
 
 --- @param x number
 --- @return table|nil
