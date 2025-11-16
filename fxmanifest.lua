@@ -30,3 +30,12 @@ exports {
     'getSharedObject',
     'getServerObject'
 }
+
+dependencies {
+    'es_extended',
+    'ox_inventory'
+}
+
+files {
+    'locales/json/config.json'
+}
