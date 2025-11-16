@@ -1,13 +1,9 @@
 EVX = EVX or {}
 Locale = Locale or {}
-
 EVX.Locale = Locale
-
 Locale.default = "en"
-Locale.list = {
-    "en", "es"
-}
-
+Locale.list = {"en", "es"}
+Locale.cur = Locale.default
 Locale.default = Locale.default or {}
 Locale.list = Locale.list or {}
 
@@ -24,3 +20,6 @@ function Locale.contains(list, lang)
     return false
 end
 
+function Locale.setdef()
+    Locale.cur = Locale.default
+end
