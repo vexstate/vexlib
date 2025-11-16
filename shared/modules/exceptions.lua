@@ -1,3 +1,4 @@
+EVX = EVX or {}
 EVX.exceptions = EVX.exceptions or {}
 
 EVX.exceptions.types = {
@@ -23,19 +24,19 @@ end
 
 --- @generic T
 --- @param placeholder? T
---- @param kind string
+--- @param name string
 --- @param content string|any
 --- @param doExit boolean
 --- @return NORETURN
-function EVX.exceptions.throw(placeholder, kind, content, doExit)
+function EVX.exceptions.throw(placeholder, name, content, doExit)
     if type(doExit) ~= 'boolean' then
         return error("EVX.exceptions.throw: doExit must be boolean")
     end
-    if type(kind) ~= 'string' then
-        return error("EVX.exceptions.throw: kind must be string")
+    if type(name) ~= 'string' then
+        return error("EVX.exceptions.throw: name must be string")
     end
 
-    local typeInfo = EVX.exceptions.types[kind] or { placeholder = placeholder, name = kind }
+    local typeInfo = EVX.exceptions.types[name] or { placeholder = placeholder, name = name }
     local message = string.format("[%s] %s", typeInfo.placeholder, tostring(content))
 
     if doExit then
@@ -47,15 +48,15 @@ end
 
 --- @generic T
 --- @param placeholder? T
---- @param kind string
+--- @param name string
 --- @param content string|any
 --- @return NORETURN
-function EVX.exceptions.content(placeholder, kind, content)
-    if type(kind) ~= 'string' then
+function EVX.exceptions.content(placeholder, name, content)
+    if type(name) ~= 'string' then
         return error("EVX.exceptions.throw: kind must be string")
     end
 
-    local typeInfo = EVX.exceptions.types[kind] or { placeholder = placeholder, name = kind }
+    local typeInfo = EVX.exceptions.types[name] or { placeholder = placeholder, name = name }
     local message = string.format("[%s] %s", typeInfo.placeholder, tostring(content))
 
     return message
@@ -98,7 +99,7 @@ end
 --- @param properties table
 --- @param custom_name? string
 --- @return table
-function EVX.exceptions.useobj(obj, mt, properties, custom_name)
+function EVX.exceptions.tendobj(obj, mt, properties, custom_name)
     if type(obj) ~= "table" then
         error("EVX.exceptions.useobj: obj must be a table", 2)
     end
