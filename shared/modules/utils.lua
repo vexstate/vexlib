@@ -13,6 +13,28 @@ EVX.string._space = (" ")
 EVX.string._blank = EVX.string._blank or ""
 EVX.string._space = EVX.string._space or " "
 
+--- @param val any
+--- @param ...? any
+function EVX.rawget(val, ...)
+    return val, ...
+end
+
+function EVX.literal(type_name, ...)
+    local allowed = {...}
+    return function(value)
+        local value_type = type(value)
+        if value_type ~= type_name then
+            error("Expected type '" .. type_name .. "', got '" .. value_type .. "'")
+        end
+        for _, v in ipairs(allowed) do
+            if v == value then
+                return true
+            end
+        end
+        error("Value '" .. tostring(value) .. "' not in allowed literals")
+    end
+end
+
 function EVX.table.isEmpty(tbl)
     return next(tbl) == nil
 end
@@ -293,7 +315,6 @@ end
 --- @param textType string|nil
 --- @param placeholder string|nil
 --- @param displayBehaviour number|nil
---- @return number blip
 function EVX.blip:make(
     sprite,
     posx, posy, posz,
@@ -303,6 +324,16 @@ function EVX.blip:make(
 )
     local blip = AddBlipForCoord(posx, posy, posz)
 
+    sprite = sprite or 1
+    posx = posx or 0.0
+    posy = posy or 0.0
+    posz = posz or 0.0
+    size = size or 1.0
+    color = color or 4
+    textType = textType or "STRING"
+    placeholder = placeholder or ""
+    displayBehaviour = displayBehaviour or 4
+
     SetBlipSprite(blip, sprite)
     SetBlipDisplay(blip, displayBehaviour)
     SetBlipScale(blip, size)
@@ -311,7 +342,13 @@ function EVX.blip:make(
     BeginTextCommandSetBlipName(textType)
     AddTextComponentSubstringPlayerName(placeholder)
     EndTextCommandSetBlipName(blip)
-    return blip
+
+    local _e = EVX.exceptions.set(EVX.rawget("error"),
+        EVX.rawget("Blip not found."))
+
+    if blip then
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
 
 function EVX.blip:pmake(
@@ -332,11 +369,13 @@ function EVX.blip:pmake(
     AddTextComponentSubstringPlayerName(placeholder)
     EndTextCommandSetBlipName(blip)
 
+    local _e = EVX.exceptions.set(
+        EVX.rawget("error"),
+        EVX.rawget(tostring(("%s returned nil."):format("blip"))))
+
     if blip then
-        return blip, Exceptions.OK.Locale or 'ok'
-    else
-        return nil, Exceptions.InvalidValueError.Locale
-    end
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
 
 function EVX.blip:construct(
@@ -416,7 +455,13 @@ function EVX.blip:construct(
         EndTextCommandSetBlipName(blip)
     end
 
-    return blip
+    local _e = EVX.exceptions.set(
+        EVX.rawget("error"),
+        EVX.rawget(tostring(("%s returned nil."):format("blip"))))
+
+    if blip then
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
 
 function EVX.blip:pconstruct(
@@ -496,7 +541,14 @@ function EVX.blip:pconstruct(
         EndTextCommandSetBlipName(blip)
     end
 
-    return blip, Exceptions.OK.Locale
+
+    local _e = EVX.exceptions.set(
+        EVX.rawget("error"),
+        EVX.rawget(tostring(("%s returned nil."):format("blip"))))
+
+    if blip then
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
 
 function EVX.blip:tconstruct(tbl)
@@ -569,7 +621,14 @@ function EVX.blip:tconstruct(tbl)
         AddTextComponentString(label)
         EndTextCommandSetBlipName(blip)
     end
-    return blip
+    
+    local _e = EVX.exceptions.set(
+        EVX.rawget("error"),
+        EVX.rawget(tostring(("%s returned nil."):format("blip"))))
+
+    if blip then
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
 
 function EVX.blip:ptconstruct(tbl)
@@ -644,5 +703,11 @@ function EVX.blip:ptconstruct(tbl)
         EndTextCommandSetBlipName(blip)
     end
 
-    return blip, Exceptions.OK.Locale
+    local _e = EVX.exceptions.set(
+        EVX.rawget("error"),
+        EVX.rawget(tostring(("%s returned nil."):format("blip"))))
+
+    if blip then
+        return blip, 'ok'
+    else return nil, _e:get() end
 end
