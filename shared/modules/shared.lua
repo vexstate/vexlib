@@ -8,11 +8,6 @@ EVX.table = EVX.table or {}
 EVX.format = EVX.format or {}
 EVX.meta = EVX.meta or {}
 
-EVX.string._blank = ("")
-EVX.string._space = (" ")
-EVX.string._blank = EVX.string._blank or ""
-EVX.string._space = EVX.string._space or " "
-
 --- @param val any
 --- @param ...? any
 function EVX.rawget(val, ...)
