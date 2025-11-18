@@ -31,8 +31,74 @@ function EVX.setpromise(val)
     return val
 end
 
-RegisterNetEvent('vexlib:notifyAll')
-AddEventHandler('vexlib:notifyAll', function(message)
+function EVX.wait(promise)
+
+    if promise < 0 then
+        Wait(0)
+        return
+    end
+
+    Wait(promise)
+    return
+end
+
+function EVX.cwait(promise)
+    Citizen.Wait(promise)
+    return
+end
+
+function EVX.cawait(promise)
+    Citizen.Await(promise)
+    return
+end
+
+function EVX.setreadonly(tbl)
+    if type(tbl) ~= "table" then
+        EVX.utils.inform(EVX.rawget("[vexlib:server] Invalid data type"))
+        return
+    end
+
+    local proxy = {}
+
+    local mt = {
+        __index = tbl,
+        __newindex = function(t, k, v)
+            print(EVX.rawget("[vexlib:server] Can't modify table (readonly)"))
+        end,
+        __pairs = function()
+            return pairs(tbl)
+        end,
+        __ipairs = function()
+            return ipairs(tbl)
+        end,
+        __len = function()
+            return #tbl
+        end
+    }
+
+    setmetatable(proxy, mt)
+    return proxy
+end
+
+function EVX.getPlayerFromId(psrc)
+    if not psrc or psrc < -1 then
+        print(EVX.rawget(("[vexlib:server] Player \'%s\' is unknown"):format(psrc or -2)))
+        return
+    end
+
+    return ESX.GetPlayerFromId(psrc)
+end
+
+function EVX.getPlayerGroup(player)
+    if not player then
+        return nil
+    end
+
+    return GetPlayerGroup(player)
+end
+
+RegisterNetEvent('vexlib:notifyAllPlayers')
+AddEventHandler('vexlib:notifyAllPlayers', function(message)
     local src = source
     local player = ESX.GetPlayerFromId(src)
 
