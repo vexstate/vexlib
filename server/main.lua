@@ -86,3 +86,7 @@ AddEventHandler('vexlib:githublink', function ()
 
     TriggerClientEvent('vexlib:shownotif', src, message)
 end)
+
+EVX.registerExport('getServerObject', function ()
+    return EVX
+end)
