@@ -31,7 +31,7 @@ function EVX.literal(type_name, ...)
     end
 end
 
-function EVX.table.isEmpty(tbl)
+function EVX.table.empty(tbl)
     return next(tbl) == nil
 end
 
