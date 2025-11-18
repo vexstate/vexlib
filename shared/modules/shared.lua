@@ -8,6 +8,7 @@ EVX.table = EVX.table or {}
 EVX.format = EVX.format or {}
 EVX.meta = EVX.meta or {}
 
+
 --- @param val any
 --- @param ...? any
 function EVX.rawget(val, ...)
