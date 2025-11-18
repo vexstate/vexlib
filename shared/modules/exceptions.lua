@@ -171,6 +171,10 @@ function EVX.exceptions.set(placeholder, content, __type)
         __index = {
             get = function(self)
                 return ("[%s] %s"):format(self.placeholder, self.content)
+            end,
+            fflush = function (self, ...)
+                local p = { ... }
+                return ("[%s] %s %s"):format(self.placeholder, self.content, ... or '')
             end
         },
         __newindex = function(_, key, _)
