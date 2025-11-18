@@ -155,3 +155,29 @@ function EVX.exceptions.pcall(func)
     end
     return ok, err
 end
+
+
+--- @param placeholder string
+--- @param content string
+--- @param __type? string
+function EVX.exceptions.set(placeholder, content, __type)
+    local obj = {
+        placeholder = placeholder or "exceptions::error",
+        name = content or "exceptions_error",
+        __type = __type or "error"
+    }
+
+    return setmetatable(obj, {
+        __index = {
+            get = function(self)
+                return ("[%s] %s"):format(self.placeholder, self.content)
+            end
+        },
+        __newindex = function(_, key, _)
+            EVX.exceptions.error(("Cannot modify exception object: %s"):format(key), 2)
+        end,
+        __tostring = function(self)
+            return ("[%s] %s"):format(self.placeholder, self.content)
+        end
+    })
+end
