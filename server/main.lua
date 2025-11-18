@@ -27,10 +27,14 @@ function EVX.registerCommand(command, fn, admin)
     return true
 end
 
+--- @param val any
+--- @return NORETURN
 function EVX.setpromise(val)
     return val
 end
 
+--- @param promise number
+--- @return NORETURN
 function EVX.wait(promise)
 
     if promise < 0 then
@@ -42,11 +46,13 @@ function EVX.wait(promise)
     return
 end
 
+--- @return NORETURN
 function EVX.cwait(promise)
     Citizen.Wait(promise)
     return
 end
 
+--- @return NORETURN
 function EVX.cawait(promise)
     Citizen.Await(promise)
     return
