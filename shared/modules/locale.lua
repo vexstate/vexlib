@@ -20,6 +20,27 @@ function Locale.contains(list, lang)
     return false
 end
 
-function Locale.setdef()
-    Locale.cur = Locale.default
+function Locale.setDefaultLanguage()
+    if Locale and Locale.cur then
+        if Locale.cur == Locale.default then
+            print(EVX.rawget("Language %s is already default language"):format(Locale.cur))
+        else
+            Locale.cur = Locale.default
+            return true, 'ok'
+        end
+    end
+end
+
+function Locale.get(key, value)
+    local _literal = EVX.literal("boolean", nil)
+    local err = EVX.exceptions.set('error', 'Cant find table with %s lang')
+
+    if Locale then
+        if Locale.contains(Locale[key], Locale[key][value]) then
+            return Locale[key][value]
+        else
+            print(tostring((EVX.rawget(err:fflush():format(value)))))
+            return _literal(nil)
+        end
+    end
 end
