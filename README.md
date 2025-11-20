@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/Maintained%3F-Yes-lightblue?style=flat" alt="Maintained?" />
   <img src="https://img.shields.io/badge/Written%20In-Lua-2757F5?style=flat" alt="Written in Lua" />
 </p>
-<hr />
+
 <div align="center">
     <h1><i>Vexlib</i></h1>
     <h3>Clean & Modular Lua Framework for FiveM</h3>
