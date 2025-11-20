@@ -9,8 +9,7 @@ EVX.meta = {
     dist = "https://github.com/LuaDist" -- all credits for libs/ :)
 }
 
-
---- @param env number
+--- @param env string
 --- @return number|any
 function EVX.isEnv(env)
     if EVX.env ~= env then
