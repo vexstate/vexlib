@@ -49,7 +49,6 @@ Whether you're building small custom scripts or large-scale roleplay frameworks,
 ---
 
 ## Table of Contents
-- [What is VexLib](#what-is-a-vexlib)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage Examples](#usage-examples)
