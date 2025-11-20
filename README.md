@@ -26,4 +26,7 @@
 <hr />
 <div align="center">
     <h1><i>Vexlib</i></h1>
+    <p>Clean & Modular Lua Framework for FiveM</p>
+    <b>(ESX and OX Compatible)</b>
 </div>
+<hr />
