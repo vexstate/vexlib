@@ -39,7 +39,7 @@
 
 ## What is a Vexlib?
 
-> [IMPORTANT]  
+> [INFO]  
 > **_VexLib_** is a lightweight, modular Lua utility framework for [**FiveM**](https://fivem.net) that provides a clean, standardized way to build scripts and manage shared logic across multiple resources. It simplifies common tasks like configuration management, event handling, player data storage, and database interactions.  
 >  
 > Designed with modularity in mind, **_VexLib_** allows developers to include only the features they need, helping maintain performance and keeping scripts organized. Whether you’re building small custom scripts or large-scale frameworks, it encourages reusable, maintainable, and consistent code practices.
