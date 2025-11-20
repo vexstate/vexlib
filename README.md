@@ -32,7 +32,7 @@
 <hr />
 
 **Author:** [@n11kol11c](https://github.com/n11kol11c)  
-**Version:** 3.0.0  
+**Version:** _3.0.0_  
 **Framework Compatibility:** `ESX Legacy / ESX 1.x / OX / ox_lib / ox_target`
 
 **License:** [MIT](https://github.com/vexstate/vexlib?tab=MIT-1-ov-file)  
