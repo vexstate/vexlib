@@ -8,11 +8,17 @@ EVX.exceptions.object = {
         [2] = { TYPE = "ok_exit", INFO = "Everything is okey, exiting..." }
     },
     error = {
-        [1] = { TYPE = "exception", INFO = "The error has occured." },
-        [2] = { TYPE = "value_exception", INFO = "Value exception has been made." }
+        [1] = {
+            TYPE = "exception",
+            INFO = "The error has occured."
+        },
+        [2] = {
+            TYPE = "value_exception",
+            INFO = "Value exception has been made."
+        }
     },
     abort = {
-        { TYPE = "abort", INFO = "Aborting..." }
+        [1] = { TYPE = "abort", INFO = "Aborting..." }
     }
 }
 
@@ -29,7 +35,6 @@ function EVX.exceptions.plist(full)
         end
     end
 end
-
 
 --- @param tp string
 --- @param des? string
@@ -71,4 +76,28 @@ function EVX.exceptions.createobj(tp, des, val)
 
     setmetatable(obj, mt)
     return obj
+end
+
+
+--- @return string|nil
+function EVX.exceptions.get(obj, tp)
+    if type(obj) ~= "string" then
+        return nil
+    end
+
+    if type(tp) ~= "number" then
+        return nil
+    end
+
+    local ct = EVX.exceptions.object[obj]
+    if not ct then
+        return nil
+    end
+
+    local e = ct[tp]
+    if not e then
+        return nil
+    end
+
+    return e.INFO
 end
