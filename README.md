@@ -47,7 +47,7 @@ With `vexlib`, developers can create reusable components, enforce consistent cod
 Whether you're building small custom scripts or large-scale roleplay frameworks, `vexlib` provides the tools to streamline development, improve maintainability, and encourage best practices across your projects.
 
 ## Table of Contents
-- [What is VexLib](##what-is-vexlib)
+- [What is VexLib](#what-is-vexlib)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage Examples](#usage-examples)
