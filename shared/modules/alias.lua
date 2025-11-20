@@ -1,7 +1,0 @@
---- @diagnostic disable: undefined-global
---- @diagnostic disable: unused-function
---- @alias i32 number
---- @alias TABLE table
---- @alias NONE nil
---- @alias NORETURN any
---- @alias bool boolean
