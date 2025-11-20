@@ -36,3 +36,7 @@
 **Framework Compatibility:** `ESX Legacy / ESX 1.x / OX / ox_lib / ox_target`
 
 **License:** MIT  
+
+## What is a Vexlib?
+
+**_vexlib_** is a lightweight, modular Lua utility framework for [**FiveM**](https://fivem.net) that provides a clean, standardized way to build scripts and manage shared logic across multiple resources.  
