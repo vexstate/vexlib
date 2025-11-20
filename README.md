@@ -45,3 +45,15 @@
 With `vexlib`, developers can create reusable components, enforce consistent coding patterns, and reduce boilerplate code across server and client scripts. Its modular architecture allows you to include only the features you need, keeping performance optimized and resources easy to maintain.
 
 Whether you're building small custom scripts or large-scale roleplay frameworks, `vexlib` provides the tools to streamline development, improve maintainability, and encourage best practices across your projects.
+
+## Table of Contents
+- [What is VexLib](##what-is-vexlib)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage Examples](#usage-examples)
+  - [Load Config](#load-config)
+  - [Database Example](#database-example-oxmysql)
+  - [Event Example](#event-example)
+- [Contributing](#contributing)
+- [Support & Links](#support--links)
+- [License](#license)
