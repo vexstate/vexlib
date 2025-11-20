@@ -30,3 +30,9 @@
     <b>(ESX and OX Compatible)</b>
 </div>
 <hr />
+
+**Author:** [Matija](https://github.com/n11kol11c)  
+**Version:** 3.0.0  
+**Framework Compatibility:** `ESX Legacy / ESX 1.x / OX / ox_lib / ox_target`
+
+**License:** MIT  
