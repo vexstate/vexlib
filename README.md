@@ -26,8 +26,8 @@
 <hr />
 <div align="center">
     <h1><i>Vexlib</i></h1>
-    <p>Clean & Modular Lua Framework for FiveM</p>
-    <b>(ESX and OX Compatible)</b>
+    <h3>Clean & Modular Lua Framework for FiveM</h3>
+    <b><i>ESX and OX Compatible</i></b>
 </div>
 <hr />
 
@@ -39,7 +39,8 @@
 
 ## What is a Vexlib?
 
-**_vexlib_** is a lightweight, modular Lua utility framework for [**FiveM**](https://fivem.net) that provides a clean, standardized way to build scripts and manage shared logic across multiple resources.
+> [IMPORTANT]
+> **_vexlib_** is a lightweight, modular Lua utility framework for [**FiveM**](https://fivem.net) that provides a clean, standardized way to build scripts and manage shared logic across multiple resources.
 
 With `vexlib`, developers can create reusable components, enforce consistent coding patterns, and reduce boilerplate code across server and client scripts. Its modular architecture allows you to include only the features you need, keeping performance optimized and resources easy to maintain.
 
