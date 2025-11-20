@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <Meta>
+        <Version>3.0.0</Version>
+        <Author>Matija</Author>
+        <GitHub>https://github.com/vexstate</GitHub>
+    </Meta>
+
+    <Environment>
+        <Default>server</Default>
+        <Allowed>server,client</Allowed>
+    </Environment>
+
+    <Locale>
+        <Default>en</Default>
+        <Available>
+            <Lang>en</Lang>
+            <Lang>es</Lang>
+        </Available>
+    </Locale>
+
+    <Admins>
+        <Group>admin</Group>
+        <Group>superadmin</Group>
+    </Admins>
+
+    <Notifications>
+        <MaxLength>2000</MaxLength>
+        <RateLimit>2000</RateLimit>
+    </Notifications>
+
+    <Labels>
+        <Root>
+            <Path>vexlib:root</Path>
+            <Path>vexlib:fxmanifest</Path>
+            <Path>vexlib:shared/locales</Path>
+        </Root>
+    </Labels>
+
+    <Debug>
+        <Enable>true</Enable>
+    </Debug>
+</Config>
