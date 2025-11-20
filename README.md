@@ -31,11 +31,11 @@
 </div>
 <hr />
 
-**Author:** [Matija](https://github.com/n11kol11c)  
+**Author:** [@n11kol11c](https://github.com/n11kol11c)  
 **Version:** 3.0.0  
 **Framework Compatibility:** `ESX Legacy / ESX 1.x / OX / ox_lib / ox_target`
 
-**License:** MIT  
+**License:** [MIT](https://github.com/vexstate/vexlib?tab=MIT-1-ov-file)  
 
 ## What is a Vexlib?
 
