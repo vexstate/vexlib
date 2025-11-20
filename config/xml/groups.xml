@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Groups>
+    <Roles>
+        <Role>admin</Role>
+        <Role>superadmin</Role>
+        <Role>moderator</Role>
+        <Role>crew</Role>
+        <Role>member</Role>
+        <Role>unknown</Role>
+    </Roles>
+</Groups>
