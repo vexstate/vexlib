@@ -11,9 +11,7 @@ exports("locale_get", function()
     }
 end)
 
-exports("format_get", function()
-    return EVX.format
-end)
+
 
 exports("string_get", function()
     return EVX.string
