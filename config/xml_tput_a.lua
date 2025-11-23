@@ -2,6 +2,7 @@ EVX = EVX or {}
 EVX.Config = EVX.Config or {}
 
 local xml = require("LuaXML")
+local find = nil
 local configFile = "config.xml"
 
 local function getText(node)
@@ -77,3 +78,4 @@ EVX.Config = loadConfig()
 
 
 print("[EVX] Framework version: " .. EVX.Config.Meta.Version)
+
