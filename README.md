@@ -16,7 +16,6 @@
   <a href="https://github.com/vexstate/vexlib/network/members">
     <img src="https://img.shields.io/github/forks/vexstate/vexlib?style=flat&color=teal&label=Forks" alt="GitHub forks" />
   </a>
-
   <br />
   <img src="https://img.shields.io/badge/Author-n11kol11c-blue?style=flat" alt="Author" />
   <img src="https://img.shields.io/badge/Open%20Source-Yes-darkgreen?style=flat" alt="Open Source" />
