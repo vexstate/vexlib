@@ -13,7 +13,6 @@ function EVX.Locale.getDefault()
     return ""
 end
 
-
 --- @param lang string
 --- @return boolean|nil
 function EVX.Locale.setDefault(lang)
