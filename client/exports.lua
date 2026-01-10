@@ -3,8 +3,7 @@ if EVX.isEnv("client") == -1 then return end
 
 exports("utils_get", function()
     return EVX.utils
-end)
-
+end) -- utils
 exports("locale_get", function()
     return {
         get = EVX.Locale.get
